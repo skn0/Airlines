@@ -1,6 +1,10 @@
 ﻿(function (app) {
 
     var flightsController = function ($scope, flightService) {
+        
+        var init = function () {
+            $scope.flights = flightService.getFlights();
+        };
 
         $scope.selectFlight = function(flight) {
 
@@ -10,11 +14,16 @@
 
             flight.approved = !flight.approved;            
             
-        };
+            if (flightService.selectFlight(flight.id)) {
+                $scope.status = "you have made a great decision";
+            }            
+        };//end method selectflight
 
-        $scope.flights = flightService.getFlights();        
+        
+        init();
 
-    };
+        
+    };//end controller
 
     app.controller("flightsController", ["$scope", "flightService", flightsController]);
 

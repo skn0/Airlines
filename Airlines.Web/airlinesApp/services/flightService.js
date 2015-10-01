@@ -33,6 +33,13 @@
         };
 
 
+        flightFactory.selectFlight = function (id) {
+            //http.put("/flights/select/3", id)
+            //then deselect the rest of the items
+            return true;
+        };
+
+
         return flightFactory;
     };
 
