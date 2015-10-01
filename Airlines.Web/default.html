@@ -7,13 +7,22 @@
     <link href="Content/site.css" rel="stylesheet" />
 </head> 
 <body ng-app="airlineApp">    
-    <div class="container" ng-controller="flightsController">
-        
+    <div class="container" ng-controller="flightsController">        
         <h1>Airlines!</h1>
         <div class="row" >
             <div class="col-md-6" ng-repeat="flight in flights">
+                
                 <div class="flightCard">
-                    <h3>{{flight.airline}}</h3>
+                    <div>
+                        <h3>{{flight.airline}}</h3>
+                        <div class="pull-right">
+                            <button ng-class="{btn: true, 'btn-success': flight.approved}" ng-click="selectFlight(flight)">
+                                Select
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </div>
+                    </div>
+                   
                     <div>
                         <span>Price: {{flight.price}}</span>
                         <span>Duration: {{flight.totalDuration}}</span>
@@ -27,7 +36,8 @@
                                 {{city}}
                             </li>
 
-                        </ul>
+                        </ul>                       
+
                     </div>
                 </div>
             </div>
@@ -37,5 +47,6 @@
     <script src="Scripts/angular.js"></script>
     <script src="airlinesApp/airlineApp.js"></script>
     <script src="airlinesApp/controllers/flightsController.js"></script>
+    <script src="airlinesApp/services/flightService.js"></script>
 </body>
 </html>
