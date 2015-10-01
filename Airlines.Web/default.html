@@ -7,7 +7,7 @@
     <link href="Content/site.css" rel="stylesheet" />
 </head> 
 <body ng-app="airlineApp">    
-    <div class="container" ng-controller="flightsController">        
+    <div class="container" ng-controller="flightsController" ng-cloak>        
         <h1>Airlines!</h1>
         <div>
             <div class="alert alert-success" ng-show="status">                
@@ -29,13 +29,13 @@
                     </div>
                    
                     <div>
-                        <span>Price: {{flight.price}}</span>
+                        <span>Price: {{flight.price | currency}}</span>
                         <span>Duration: {{flight.totalDuration}}</span>
                     </div>
                     <hr />
                     <div>
-                        <span>Start Time: {{flight.startTime}}</span>
-                        <span>Start Time: {{flight.endTime}}</span>
+                        <span>Start Time: {{flight.startTime | date:'hh:mm'}}</span>
+                        <span>Start Time: {{flight.endTime | date:'hh:mm'}}</span>
                         <ul class="breadcrumb">
                             <li ng-repeat="city in flight.cities">
                                 {{city}}
